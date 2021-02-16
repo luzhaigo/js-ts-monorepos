@@ -21,5 +21,9 @@
   },
   "scripty": {
     "path": "../../scripts/packages"
+  },
+  "dependencies": {
+    "@shlack/types": "^2.0.0",
+    "@shlack/utils": "^1.0.0"
   }
 }

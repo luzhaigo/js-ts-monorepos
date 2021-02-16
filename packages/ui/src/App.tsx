@@ -1,16 +1,11 @@
-import * as React from "react";
-import {
-  BrowserRouter as Router,
-  match,
-  Route,
-  Switch,
-} from "react-router-dom";
-import { getAllTeams } from "@shlack/data";
-import { ITeam } from "@shlack/types";
-import { useAsyncDataEffect } from "@shlack/utils";
-import Loading from "./components/Loading";
-import SelectedTeam from "./components/SelectedTeam";
-import TeamSelector from "./components/TeamSelector";
+import * as React from 'react';
+import { BrowserRouter as Router, match, Route, Switch } from 'react-router-dom';
+import { getAllTeams } from '@shlack/data';
+import { ITeam } from '@shlack/types';
+import { useAsyncDataEffect } from '@shlack/utils';
+import Loading from './components/Loading';
+import SelectedTeam from './components/SelectedTeam';
+import TeamSelector from './components/TeamSelector';
 
 const { useState } = React;
 
@@ -19,7 +14,7 @@ const App: React.FunctionComponent = () => {
 
   useAsyncDataEffect(() => getAllTeams(), {
     setter: setTeams,
-    stateName: "teams",
+    stateName: 'teams',
   });
   if (!teams) return <Loading message="Loading teams" />;
   return (
@@ -39,9 +34,7 @@ const App: React.FunctionComponent = () => {
           </Route>
           <Route
             path="/team/:teamId"
-            children={({ match }: { match: match<{ teamId: string }> }) => (
-              <SelectedTeam match={match} teams={teams} />
-            )}
+            children={({ match }: { match: match<{ teamId: string }> }) => <SelectedTeam match={match} teams={teams} />}
           />
         </Switch>
       </div>
